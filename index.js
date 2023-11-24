@@ -1,4 +1,5 @@
 const mongoose = require("mongoose"); // import mongoose
+const User = require('./models/User');
 
 try {
   mongoose.connect(
@@ -13,3 +14,11 @@ try {
 } catch (error) {
   console.log(error);
 }
+
+//Create new user
+async function createUser(newUser) {
+  const user = new User(newUser); //saving user inside computer memory
+  await user.save(); //saving data in mongoDB
+}
+
+createUser({email: "random2@gmail.com", password: "5984"});

@@ -1,20 +1,15 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://temp:BNhlAPn8HiI8RO3p@cluster0.pxqen0f.mongodb.net/?retryWrites=true&w=majority";
+const mongoose = require("mongoose"); // import mongoose
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
-
-async function run() {
-  try {
-    console.log("Successfully connected to MongoDB!");
-  } catch(err) {
-    console.log(err);
-  }
+try {
+  mongoose.connect(
+    "mongodb+srv://temp:PwadZOK8SdmBuox9@cluster0.pxqen0f.mongodb.net/?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true, // default recommended options
+      useUnifiedTopology: true,
+    }
+  )
+  .then(e => console.log("MongoDB ready"))
+  .catch(console.error);
+} catch (error) {
+  console.log(error);
 }
-run();
